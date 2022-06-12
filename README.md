@@ -1,2 +1,2 @@
 # node-plksim
-Bindings to plksim for Node.js
+Binding to plksim for Node.js

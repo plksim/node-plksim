@@ -1,0 +1,36 @@
+{
+  "name": "plksim",
+  "version": "0.1.0",
+  "description": "Binding to plksim for Node.js",
+  "main": "lib/binding.js",
+  "scripts": {
+    "rebuild": "cmake-js compile",
+    "prebuild": "prebuild --backend cmake-js --runtime napi --all --strip --verbose",
+    "upload": "prebuild --backend cmake-js --runtime napi --upload ${GITHUB_TOKEN_PLKSIM}",
+    "install": "prebuild-install --runtime napi || cmake-js compile",
+    "test": "jest"
+  },
+  "binary": {
+    "napi_versions": [3]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plksim/node-plksim.git"
+  },
+  "author": "vvlookman@gmail.com",
+  "license": "LGPL-2.1",
+  "bugs": {
+    "url": "https://github.com/plksim/node-plksim/issues"
+  },
+  "homepage": "https://github.com/plksim/node-plksim#readme",
+  "devDependencies": {
+    "cmake-js": "^6.3.2",
+    "jest": "^28.1.1",
+    "prebuild": "^11.0.3"
+  },
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "node-addon-api": "^5.0.0",
+    "prebuild-install": "^7.1.1"
+  }
+}

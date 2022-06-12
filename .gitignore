@@ -1,3 +1,19 @@
+# Editors
+*.sublime-*
+.vscode
+
+# Other
+.DS_Store
+
+# Built files
+build
+coverage
+dist
+prebuilds
+
+# Node.js
+node_modules
+
 # Prerequisites
 *.d
 
