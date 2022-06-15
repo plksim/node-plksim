@@ -4,7 +4,7 @@ test('properties', () => {
   expect(plksim.nativeVersion).toMatch(/^[0-9]*\.[0-9]*\.[0-9]*$/);
 });
 
-test('samples', () => {
-  const svg = plksim.sampleMeshSvg();
-  console.log(svg);
+test('samples', async () => {
+  const svg = await plksim.sampleMeshSvg();
+  expect(svg).toMatch(/^<svg/);
 });

@@ -1,31 +1,16 @@
 #include <napi.h>
 
-#include <plksim/samples.hh>
 #include <plksim/version.hh>
+
+#include "samples.hh"
 
 using namespace Napi;
 
-namespace plksim {
-
-Value NativeVersionGetter(const CallbackInfo& info) {
-  return String::New(info.Env(), VERSION);
-}
-
-String SampleMeshSvgMethod(const Napi::CallbackInfo& info) {
-  auto svg = sampleMeshSvg();
-  return String::New(info.Env(), svg);
-}
-
 Object Init(Env env, Object exports) {
-  PropertyDescriptor nativeVersion = PropertyDescriptor::Accessor<NativeVersionGetter>("nativeVersion");
-  exports.DefineProperties({nativeVersion});
-
-  exports.Set(String::New(env, "sampleMeshSvg"), //
-              Function::New(env, SampleMeshSvgMethod));
+  exports.Set("nativeVersion", String::New(env, plksim::version));
+  exports.Set("sampleMeshSvg", Function::New(env, sampleMeshSvg));
 
   return exports;
 }
 
 NODE_API_MODULE(addon, Init);
-
-} // namespace plksim
