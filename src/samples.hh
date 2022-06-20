@@ -6,6 +6,8 @@
 
 using namespace Napi;
 
+namespace node_plksim {
+
 struct SampleMeshSvgAsyncWorker : AsyncWorker {
   SampleMeshSvgAsyncWorker(Napi::Env& env) : AsyncWorker(env), mDeferred(Napi::Promise::Deferred::New(env)) {
   }
@@ -18,6 +20,8 @@ struct SampleMeshSvgAsyncWorker : AsyncWorker {
       mResult = plksim::sampleMeshSvg();
     } catch (std::exception const& ex) {
       SetError(ex.what());
+    } catch (...) {
+      SetError("unknown");
     }
   }
 
@@ -29,7 +33,7 @@ struct SampleMeshSvgAsyncWorker : AsyncWorker {
     mDeferred.Reject(error.Value());
   }
 
-  Promise GetPromise() {
+  Promise GetPromise() const {
     return mDeferred.Promise();
   }
 
@@ -48,3 +52,5 @@ Value sampleMeshSvg(const CallbackInfo& info) {
 
   return promise;
 }
+
+} // namespace node_plksim

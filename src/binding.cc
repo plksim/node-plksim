@@ -6,11 +6,15 @@
 
 using namespace Napi;
 
-Object Init(Env env, Object exports) {
+namespace node_plksim {
+
+Object init(Env env, Object exports) {
   exports.Set("nativeVersion", String::New(env, plksim::version));
   exports.Set("sampleMeshSvg", Function::New(env, sampleMeshSvg));
 
   return exports;
 }
 
-NODE_API_MODULE(addon, Init);
+NODE_API_MODULE(addon, init);
+
+} // namespace node_plksim
