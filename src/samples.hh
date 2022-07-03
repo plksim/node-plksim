@@ -17,7 +17,7 @@ struct SampleMeshSvgAsyncWorker : AsyncWorker {
 
   void Execute() override {
     try {
-      mResult = plksim::sampleMeshSvg();
+      mResult = plksim::sample_mesh_svg();
     } catch (std::exception const& ex) {
       SetError(ex.what());
     } catch (...) {
