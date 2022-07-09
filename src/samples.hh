@@ -9,7 +9,8 @@ using namespace Napi;
 namespace node_plksim {
 
 struct SampleMeshSvgAsyncWorker : AsyncWorker {
-  SampleMeshSvgAsyncWorker(Napi::Env& env) : AsyncWorker(env), mDeferred(Napi::Promise::Deferred::New(env)) {
+  SampleMeshSvgAsyncWorker(Napi::Env& env)
+      : AsyncWorker(env), mDeferred(Napi::Promise::Deferred::New(env)) {
   }
 
   ~SampleMeshSvgAsyncWorker() {
